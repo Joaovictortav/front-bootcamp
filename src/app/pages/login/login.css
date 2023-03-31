@@ -1,0 +1,30 @@
+.login {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.dialog {
+    height: 50%;
+    width: 40vw;
+    background-color: rgb(22, 77, 51);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.title-login {
+    margin-bottom: 20px;
+}
+
+.form-field {
+    margin-bottom: 5px;
+}

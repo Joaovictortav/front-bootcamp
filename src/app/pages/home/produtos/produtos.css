@@ -1,0 +1,21 @@
+.img--prod {
+    height: 300px;
+}
+
+.container-cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.card {
+    margin: 10px;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.title-product {
+    text-align: center;
+    margin: 20px;
+    font-size: 2rem;
+}

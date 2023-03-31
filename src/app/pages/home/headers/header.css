@@ -1,0 +1,47 @@
+header {
+    height: 55px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    background-color: transparent;
+    transition: all ease 0.5s;
+}
+
+.black {
+    background-color: #141414;
+}
+
+.header--logo {
+    height: 60px;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+
+.header--user {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 25px;
+    width: auto;
+    color: white;
+    cursor: pointer;
+}
+
+a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logout-icon {
+    margin-left: 20px;
+}
