@@ -29,7 +29,7 @@ const Login = () => {
       return (
         <div className="login">        
             <div className="dialog">   
-                <h1 className="title-login">Login Teste JMV</h1>   
+                <h1 className="title-login">Login BootCamp</h1>   
                 <Formik initialValues={{}} onSubmit={handleSubmit} validationSchema={validators}>
                     <Form className="form">
                         <div className="form-group">
