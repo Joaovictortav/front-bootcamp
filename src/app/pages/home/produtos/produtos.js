@@ -14,13 +14,11 @@ const Produtos = (produtos) => {
         <>
             <h3 className="title-product">Produtos</h3>
             <div className="container-cards">
-                {produtos.data ? produtos.data.products.map( (item, key) => (
+                {produtos.data ? produtos.data.map( (item) => (
                     <>  
                         <Card className="card" sx={{ maxWidth: 345, maxHeight: 600 }}>
                             <CardMedia
                             component="img"
-                            height="400"
-                            width="345"
                             image={item.link}
                             />
                             <CardContent>
