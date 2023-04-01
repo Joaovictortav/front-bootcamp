@@ -6,13 +6,36 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import axios from "axios";
 import { productContext } from '../../../../store/contextProduct';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import axios from 'axios';
 
 const Produtos = () => {
 
+    const [itemP, setItemP] = React.useState(null);
+    const [open, setOpen] = React.useState(false);
     const context = useContext(productContext)
     console.log(context.products)
+
+    const handleClickOpen = async (item) => {
+        const product = await axios.get(`https://localhost:44388/V1/Busca/GetProduct?store=${item.provider}&id=${item.id}`);
+        console.log(product.data);
+        setItemP(product.data);
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    const redirectProduct = (link) => {
+        console.log(link);
+        window.open(link);
+    }
 
     return (
         <>
@@ -20,6 +43,22 @@ const Produtos = () => {
             <div className="container-cards">
                 {context.products ? context.products?.map( (item) => (
                     <>  
+                        <div>
+                            <Dialog open={open} onClose={handleClose}>
+                                <DialogTitle>Detalhe</DialogTitle>
+                                <DialogContent>
+                                <DialogContentText>
+                                    <div> {itemP?.name } </div>
+                                    <br></br>
+                                    <div>{itemP?.detalhe}</div>
+                                </DialogContentText>
+                                </DialogContent>
+                                <DialogActions>
+                                <Button onClick={() => redirectProduct(itemP.link)}>Comprar</Button>
+                                <Button onClick={handleClose}>Fechar</Button>
+                                </DialogActions>
+                            </Dialog>
+                        </div>
                         <Card className="card" sx={{ maxWidth: 345, maxHeight: 600 }}>
                             <CardMedia
                             component="img"
@@ -40,7 +79,7 @@ const Produtos = () => {
                             </Typography>
                             </CardContent>
                             <CardActions>
-                                <Button >Detalhe</Button>
+                                <Button onClick={() => handleClickOpen(item)}>Detalhe</Button>
                             </CardActions>
                             
                         </Card>
