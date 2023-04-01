@@ -26,7 +26,11 @@ export default () => {
     const context = useContext(productContext);
 
     const getProdutos = async function () {
-        const products = await axios.get(`https://localhost:44388/V1/Busca/Get?name=${inputRef.current.value}`);
+        const products = await axios.get(`https://localhost:44388/V1/Busca/Get?name=${inputRef.current.value}&guid=${localStorage.getItem('guid')}`, {
+            headers: {
+                'AuthToken': localStorage.getItem('token')
+            }
+        });
         context.setproducts(products.data);
     }
 

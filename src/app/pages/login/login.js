@@ -13,6 +13,7 @@ const Login = () => {
             console.log(retorno);
             if (retorno.data.token) {
                 localStorage.setItem('token', retorno.data.token);
+                localStorage.setItem('guid', retorno.data.guid);
                 history.push('/home')
             }
         })
