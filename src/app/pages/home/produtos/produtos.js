@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import "./produtos.css";
 import Button from '@mui/material/Button';
 import CardActions from '@mui/material/CardActions';
@@ -7,14 +7,18 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import axios from "axios";
+import { productContext } from '../../../../store/contextProduct';
 
-const Produtos = (produtos) => {
+const Produtos = () => {
+
+    const context = useContext(productContext)
+    console.log(context.products)
 
     return (
         <>
             <h3 className="title-product">Produtos</h3>
             <div className="container-cards">
-                {produtos.data ? produtos.data.map( (item) => (
+                {context.products ? context.products?.map( (item) => (
                     <>  
                         <Card className="card" sx={{ maxWidth: 345, maxHeight: 600 }}>
                             <CardMedia
