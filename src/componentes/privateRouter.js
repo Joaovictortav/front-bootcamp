@@ -12,9 +12,9 @@ const PrivateRouter =  props => {
         const getAuth = async () => {
             const tokenExist = !!localStorage.getItem('token');
             if (tokenExist) {
-                const isValidReq = await axios.get('http://localhost:44388/authentication', {
+                const isValidReq = await axios.get('https://localhost:7099/V1/Auth/VerifyToken', {
                     headers: {
-                        authorization: localStorage.getItem('token')
+                        'AuthToken': localStorage.getItem('token')
                     }
                 });
                 setAuth(isValidReq.data);    

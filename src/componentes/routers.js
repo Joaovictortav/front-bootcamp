@@ -13,9 +13,9 @@ const Routes = () => (
             <Route exact path="/login">
                 <Login/>
             </Route>
-            <Route exact path="/home">
+            <PrivateRouter exact path="/home">
                 <Home/>
-            </Route>
+            </PrivateRouter>
         </Switch>
     </BrowserRouter>
 )

@@ -8,11 +8,11 @@ import { useHistory } from 'react-router-dom';
 const Login = () => {
     let history = useHistory();
     const handleSubmit = values => {
-        axios.post('http://localhost:44388/login', values)
+        axios.post('https://localhost:7099/V1/Auth/Login', values)
         .then( retorno => {
             console.log(retorno);
-            if (retorno.data.body.token) {
-                localStorage.setItem('token', 'bearer ' + retorno.data.body.token);
+            if (retorno.data.token) {
+                localStorage.setItem('token', retorno.data.token);
                 history.push('/home')
             }
         })
@@ -23,7 +23,7 @@ const Login = () => {
     }
 
     const validators = yup.object().shape({
-        document: yup.number().required(),
+        email: yup.string().required(),
         password: yup.string().min(3).required()
     })
       return (
@@ -33,8 +33,8 @@ const Login = () => {
                 <Formik initialValues={{}} onSubmit={handleSubmit} validationSchema={validators}>
                     <Form className="form">
                         <div className="form-group">
-                            <Field name="document" className="form-field" />
-                            <ErrorMessage component="span" name="document" className="form-error" />
+                            <Field name="email" className="form-field" />
+                            <ErrorMessage component="span" name="email" className="form-error" />
                         </div>
                         <div className="form-group">
                             <Field name="password" className="form-field" />
